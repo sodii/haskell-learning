@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script language="javascript" src="rts.js"></script>
+    <script language="javascript" src="lib.js"></script>
+    <script language="javascript" src="out.js"></script>
+  </head>
+  <body>
+  </body>
+  <script language="javascript" src="runmain.js" defer></script>
+  <textarea id="createall" cols=80 rows=20>
+실수: 피보1, 피보2, 임시;
+문자: 피보문;
+피보1 := 0;
+피보2 := 1;
+되풀이 (피보2 < 10000) {
+	피보문 := 문자붙여(피보문, 수를문(피보2));
+	피보문 := 문자붙여(피보문, " ");
+	임시 := 피보1;
+	피보1 := 피보2;
+	피보2 := 임시 + 피보1;
+}
+문자창보여(문자붙여("10000 이하의 피보나치 수열은 ", 피보문));
+  </textarea>
+  <p/>
+  <button id="translate">변환</button>
+  <p/>
+  <textarea id="result" cols=80 rows=20></textarea>
+  <p/>
+  <button id="run">실행</button>
+  <script>
+	document.getElementById('translate').addEventListener('click', function(){document.getElementById('result').value=translate(document.getElementById('createall').value);}, false);
+	document.getElementById('run').addEventListener('click', function(){eval(document.getElementById('result').value);})
+  </script>
+</html>
